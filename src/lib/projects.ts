@@ -17,6 +17,10 @@ export function getAllProjects(): Project[] {
   });
 }
 
+export function getVisibleProjects(): Project[] {
+  return getAllProjects().filter((project) => !project.hidden);
+}
+
 export function getProjectsByCategory(): Map<string, Project[]> {
   const projects = getAllProjects();
   const grouped = new Map<string, Project[]>();

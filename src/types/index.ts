@@ -22,6 +22,7 @@ export interface Project {
   tags: string[];
   what: WhatContent;
   howStatus: HowStatus;
+  hidden?: boolean;
 }
 
 export interface Experience {

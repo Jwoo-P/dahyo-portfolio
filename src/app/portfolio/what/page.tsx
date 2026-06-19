@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { getAllProjects } from "@/lib/projects";
+import { getVisibleProjects } from "@/lib/projects";
 import { getAllHow } from "@/lib/how";
 import { PortfolioView } from "@/components/portfolio/PortfolioView";
 
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default function WhatPage() {
-  const projects = getAllProjects();
+  const projects = getVisibleProjects();
   const howBySlug = Object.fromEntries(
     getAllHow().map((how) => [how.slug, how])
   );
