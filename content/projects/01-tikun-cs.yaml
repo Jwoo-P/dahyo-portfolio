@@ -1,0 +1,30 @@
+id: project-01
+slug: tikun-cs
+order: 1
+category: company
+company: 티쿤글로벌
+title: 쇼핑몰 플랫폼 기술 응대 CS
+period: 2019.10 - 2022.07
+role: CS 기획
+summary: 쇼핑몰 플랫폼 기술 문의 응대 및 이슈 관리를 통해 서비스 개선과 업무 효율화를 수행한 프로젝트
+tags:
+  - 서비스 개선
+  - 업무 효율화
+  - CS
+howStatus: draft
+
+what:
+  overview: >
+    쇼핑몰 플랫폼의 기술 문의를 응대하고 이슈를 체계적으로 관리하여
+    서비스 개선과 업무 효율화를 달성한 프로젝트입니다.
+  responsibilities:
+    - 문의 응대
+    - 이슈 일정 관리
+    - 매뉴얼 관리
+  deliverables:
+    - 이슈 관리 프로세스
+    - 매뉴얼 문서
+    - 개선 방향 선정 문서
+  highlights:
+    - 문의 3,633건 중 1,049건 이슈화
+    - 이슈 해결률 96.8%

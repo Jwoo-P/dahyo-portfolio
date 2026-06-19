@@ -1,0 +1,28 @@
+id: project-06
+slug: seller-recruitment
+order: 6
+category: company
+company: 티쿤글로벌
+title: 판매사 모집 사이트 구축
+period: 2022.03 - 2022.06
+role: 프로덕트 기획
+summary: 쇼핑몰 입점 신청부터 개설까지 자동화하는 판매사 모집 시스템을 구축한 프로젝트
+tags:
+  - 업무 효율화
+  - 서비스 구축
+howStatus: draft
+
+what:
+  overview: >
+    플랫폼에 입점할 판매사를 모집하고 관리하기 위한 시스템을 구축하여,
+    개발자 개입 없이 입점 신청부터 쇼핑몰 개설까지 진행할 수 있도록 한 프로젝트입니다.
+  responsibilities:
+    - 사용자/관리자 화면 설계
+    - 회원 구조 설계
+  deliverables:
+    - 사용자 페이지 설계
+    - 관리자 페이지 설계
+    - 입점 컨퍼런스 신청 시스템
+  highlights:
+    - 입점 안내부터 개설까지 프로세스 확립
+    - 관리 누락 방지 체계 구축

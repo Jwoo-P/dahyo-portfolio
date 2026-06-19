@@ -1,0 +1,26 @@
+id: project-03
+slug: tikun-2-cart
+order: 3
+category: company
+company: 티쿤글로벌
+title: 티쿤 2.0 카트 분리
+period: 2021.05 - 2021.09
+role: 프로덕트 기획
+summary: 오픈마켓 전환에 맞춰 판매자·배송사별 장바구니 분리 프로세스를 설계한 프로젝트
+tags:
+  - 서비스 개선
+  - 프로세스 설계
+howStatus: draft
+
+what:
+  overview: >
+    플랫폼이 오픈마켓 형식으로 확장되면서 발생한 장바구니 문제를 해결하기 위해
+    판매자·배송사별 장바구니 분리 프로세스를 설계한 프로젝트입니다.
+  responsibilities:
+    - 상품 장바구니에 담기 프로세스 설계
+  deliverables:
+    - 장바구니 분리 프로세스 설계안
+    - 주문 분리 UI/UX 설계
+  highlights:
+    - 판매자·배송사 구분 없이 장바구니 담기 가능
+    - 오픈마켓 쇼핑몰 구축 및 확장성 부여

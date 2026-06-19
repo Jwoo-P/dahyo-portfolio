@@ -1,0 +1,29 @@
+id: project-08
+slug: ai-hub-en
+order: 8
+category: company
+company: 피씨엔
+title: AI 허브 영문 홈페이지 구축
+period: 2023.06 - 2023.07
+role: 화면 기획
+summary: FGI와 벤치마킹을 기반으로 국외 사용자 대상 AI 허브 영문 홈페이지를 구축한 프로젝트
+tags:
+  - 0 to 1
+  - PMF
+  - FGI
+howStatus: draft
+
+what:
+  overview: >
+    국외 사용자에게 홍보가 되는 AI 허브 영문 홈페이지를 구축하기 위해
+    벤치마킹 조사와 FGI를 진행하고 화면을 기획한 프로젝트입니다.
+  responsibilities:
+    - 화면 기획
+    - Focus Group Interview 참석 및 진행
+  deliverables:
+    - 영문 홈페이지 화면 설계
+    - FGI 결과 보고
+    - 벤치마킹 조사 자료
+  highlights:
+    - 국외 사용자 친화적 UI 기반 홈페이지 구축
+    - 사용자 요구사항 반영 설계

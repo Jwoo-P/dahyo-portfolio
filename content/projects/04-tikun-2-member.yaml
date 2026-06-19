@@ -1,0 +1,29 @@
+id: project-04
+slug: tikun-2-member
+order: 4
+category: company
+company: 티쿤글로벌
+title: 티쿤 2.0 모든 국가 회원 통합
+period: 2021.09 - 2021.12
+role: 프로덕트 기획
+summary: 해외 진출을 위한 국가별 회원 통합 구조 및 로그인·회원가입 프로세스를 설계한 프로젝트
+tags:
+  - 서비스 개선
+  - 1 to 100
+  - Growth
+howStatus: draft
+
+what:
+  overview: >
+    무역 수출 국가 확장 전략에 맞춰 국가별 회원을 통합하고,
+    개인정보 보호 정책을 반영한 로그인·회원가입·회원탈퇴 프로세스를 설계한 프로젝트입니다.
+  responsibilities:
+    - 회원 구조 및 국가별 구조 설계
+    - 로그인, 회원가입, 회원탈퇴 처리 방식 설계
+  deliverables:
+    - 회원 통합 구조 설계안
+    - 로그인/회원가입/탈퇴 FLOW
+    - 개인정보 보호 정책 검토 자료
+  highlights:
+    - 해외 진출용 개인정보 보호 정책 기준 파악
+    - 도메인 분리 및 회원 통합 동의 절차 도입

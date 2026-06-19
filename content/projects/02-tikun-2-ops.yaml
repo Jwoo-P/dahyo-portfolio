@@ -1,0 +1,30 @@
+id: project-02
+slug: tikun-2-ops
+order: 2
+category: company
+company: 티쿤글로벌
+title: 티쿤 2.0 운영 기획
+period: 2021.02 - 2022.07
+role: 운영 기획
+summary: 고객 개선 요구사항을 검토하고 개발 가치를 판단하여 티쿤 2.0 서비스 개선을 기획한 프로젝트
+tags:
+  - 서비스 개선
+  - 업무 효율화
+  - 운영 기획
+howStatus: draft
+
+what:
+  overview: >
+    고객의 개선 요구사항을 확인하고 개발 가치를 판단하여
+    티쿤 2.0 서비스 개선 사항을 기획한 프로젝트입니다.
+  responsibilities:
+    - 개선 요구 사항 확인
+    - 이슈 가치 판단
+    - 개선 사항 문서화
+  deliverables:
+    - 개선 사항 기획 문서
+    - 케이스 정리 자료
+    - 개발 방향 선정 문서
+  highlights:
+    - 개선 요구사항 49건 중 19건 기획 진행
+    - 개발 범위 축소화로 효율적 진행

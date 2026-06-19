@@ -1,0 +1,28 @@
+id: project-05
+slug: adprint-guest-order
+order: 5
+category: company
+company: 티쿤글로벌
+title: Adprint 비회원 주문 프로세스 개선
+period: 2021.12 - 2022.03
+role: 프로덕트 기획
+summary: 회원 통합 전처리로 Adprint 비회원 주문 프로세스를 티쿤 2.0 표준에 맞게 통일한 프로젝트
+tags:
+  - 서비스 개선
+  - 프로세스 설계
+howStatus: draft
+
+what:
+  overview: >
+    모든 국가 회원 통합을 위한 전처리 프로젝트로,
+    Adprint 쇼핑몰의 비회원 주문 프로세스를 티쿤 2.0 표준에 맞게 개선한 프로젝트입니다.
+  responsibilities:
+    - 비회원 주문 프로세스 기획
+    - 업데이트 안내문 작성
+  deliverables:
+    - 비회원 주문 프로세스 설계안
+    - 업데이트 안내문
+    - 주문 조회 방식 구분 가이드
+  highlights:
+    - 구조적 문제 있는 비회원 주문 방식 통일
+    - Adprint 비회원 주문 방식 개선

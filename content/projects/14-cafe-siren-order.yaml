@@ -1,0 +1,30 @@
+id: project-14
+slug: cafe-siren-order
+order: 14
+category: side-personal
+company: 개인 프로젝트
+title: 개인 카페 사이렌 오더 앱
+period: 2023.07 - 2023.08
+role: 앱 프로덕트 기획 / UI/UX 디자인
+summary: 개인 카페를 대상으로 한 원격 주문 프로덕트를 기획·디자인한 개인 프로젝트
+tags:
+  - 0 to 1
+  - PMF
+  - UI/UX
+howStatus: ready
+
+what:
+  overview: >
+    개인 카페를 대상으로 원격 주문이 가능한 앱 프로덕트를 기획하고
+    카페 지도, 주문 프로세스, 즐겨찾는 주문 기능을 설계한 개인 프로젝트입니다.
+  responsibilities:
+    - 앱 프로덕트 기획
+    - UI/UX 디자인
+  deliverables:
+    - 사이렌 오더 주문 과정 User flow
+    - 카페 지도 기능 설계
+    - 즐겨찾는 주문 기능 설계
+    - TO-BE 프로토타입
+  highlights:
+    - 개인 카페 대상 원격 주문 프로덕트 설계
+    - UX 리서치 이론 기반 UI/UX 디자인

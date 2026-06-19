@@ -1,0 +1,28 @@
+id: project-15
+slug: ddareungi-redesign
+order: 15
+category: side-personal
+company: 개인 프로젝트
+title: 따릉이 앱 대여 과정 리디자인
+period: 2023.10 - 2023.11
+role: UI/UX 디자인
+summary: 데스크 리서치 기반으로 따릉이 이용권 구매·대여 과정을 리디자인한 개인 프로젝트
+tags:
+  - 서비스 개선
+  - UX 리서치
+  - UI/UX
+howStatus: ready
+
+what:
+  overview: >
+    데스크 리서치를 통해 문제를 정의하고
+    따릉이 이용권 구매 및 대여 과정의 User flow를 개선한 개인 프로젝트입니다.
+  responsibilities:
+    - UI/UX 디자인
+  deliverables:
+    - 이용권 구매 User flow 개선안
+    - 대여 과정 User flow 개선안
+    - TO-BE UI 시안
+  highlights:
+    - UX 리서치 이론 기반 UI/UX 디자인
+    - 이용권 구매·대여 과정 개선

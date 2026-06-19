@@ -1,0 +1,30 @@
+id: project-10
+slug: immersive-data-platform
+order: 10
+category: company
+company: 피씨엔
+title: 실감데이터 공동활용플랫폼
+period: 2023.09 - 2023.12
+role: 화면 기획
+summary: 한국문화정보원 콘텐츠·3D 데이터 제공 플랫폼의 사용자·관리자 페이지를 고도화한 프로젝트
+tags:
+  - 1 to 100
+  - Growth
+  - FGI
+howStatus: draft
+
+what:
+  overview: >
+    한국문화정보원의 콘텐츠와 3D 데이터를 제공하는 플랫폼의
+    사용자·관리자 페이지를 고도화하고 FGI를 통해 개선 사항을 반영한 프로젝트입니다.
+  responsibilities:
+    - 화면 기획
+    - 테스트 시나리오 작성
+    - Focus Group Interview 진행
+  deliverables:
+    - 사용자/관리자 화면 설계
+    - 테스트 시나리오
+    - FGI 결과 반영 개선안
+  highlights:
+    - 2회 감리 통과 및 요구사항 기반 화면 설계 완료
+    - 사용자 요구사항 반영 플랫폼 고도화

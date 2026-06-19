@@ -1,0 +1,29 @@
+id: project-07
+slug: maritime-safety
+order: 7
+category: company
+company: 리스크제로
+title: 해양수산부 안전관리 시스템
+period: 2022.10 - 2022.11
+role: SI 기획
+summary: 현장 근로자 출퇴근·안전 점수·센서·CCTV 모니터링 시스템을 기획한 프로젝트
+tags:
+  - 1 to 100
+  - Growth
+  - SI
+howStatus: draft
+
+what:
+  overview: >
+    해양수산부 현장의 근로자 출퇴근, 안전 점수 산정, 센서 장비 모니터링,
+    CCTV 화면을 통합 관리하는 안전관리 시스템을 기획한 프로젝트입니다.
+  responsibilities:
+    - SI 기획
+  deliverables:
+    - 출퇴근 시스템 설계
+    - 안전 점수 모니터링 화면
+    - 센서 장비 API 연동 화면
+    - CCTV 모니터링 화면
+  highlights:
+    - 센서 장비 도입 솔루션 구축
+    - 현장 안전 관리자용 모니터링 화면 제공
