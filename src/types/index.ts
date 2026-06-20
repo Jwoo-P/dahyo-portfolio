@@ -30,6 +30,18 @@ export interface Experience {
   period: string;
   role: string;
   description?: string;
+  tasks?: string[];
+}
+
+export interface Education {
+  school: string;
+  major: string;
+  period: string;
+}
+
+export interface Certification {
+  name: string;
+  period: string;
 }
 
 export interface About {
@@ -37,6 +49,8 @@ export interface About {
   headline: string;
   bio: string;
   experiences: Experience[];
+  education?: Education[];
+  certifications?: Certification[];
   skills: string[];
   links?: { label: string; url: string }[];
 }

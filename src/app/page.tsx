@@ -47,9 +47,16 @@ export default function HomePage() {
                 {exp.role}
               </p>
               {exp.description && (
-                <p className="text-sm text-[var(--color-muted)] leading-relaxed">
+                <p className="text-sm text-[var(--color-muted)] leading-relaxed mb-2">
                   {exp.description}
                 </p>
+              )}
+              {exp.tasks && exp.tasks.length > 0 && (
+                <ul className="text-sm text-[var(--color-muted)] leading-relaxed list-disc pl-4 space-y-1">
+                  {exp.tasks.map((task) => (
+                    <li key={task}>{task}</li>
+                  ))}
+                </ul>
               )}
             </div>
           ))}
@@ -63,6 +70,42 @@ export default function HomePage() {
           ))}
         </div>
       </Section>
+
+      {about.education && about.education.length > 0 && (
+        <Section title="Education">
+          <div className="space-y-6">
+            {about.education.map((edu) => (
+              <div key={edu.school + edu.period}>
+                <div className="flex flex-wrap items-baseline justify-between gap-2 mb-1">
+                  <h3 className="text-sm font-medium">{edu.school}</h3>
+                  <span className="text-xs text-[var(--color-muted)]">
+                    {edu.period}
+                  </span>
+                </div>
+                <p className="text-sm text-[var(--color-muted)]">{edu.major}</p>
+              </div>
+            ))}
+          </div>
+        </Section>
+      )}
+
+      {about.certifications && about.certifications.length > 0 && (
+        <Section title="Certifications">
+          <div className="space-y-6">
+            {about.certifications.map((cert) => (
+              <div
+                key={cert.name + cert.period}
+                className="flex flex-wrap items-baseline justify-between gap-2"
+              >
+                <h3 className="text-sm font-medium">{cert.name}</h3>
+                <span className="text-xs text-[var(--color-muted)]">
+                  {cert.period}
+                </span>
+              </div>
+            ))}
+          </div>
+        </Section>
+      )}
     </div>
   );
 }
