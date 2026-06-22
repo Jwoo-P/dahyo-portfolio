@@ -9,12 +9,21 @@ experiences:
   - company: 미래아이앤티
     period: 2024.11 - 재직중
     role: 프로젝트 리드 / 기획
+    keywords:
+      - SI
+      - SM
+      - 공공기관
+      - 커머스
     tasks:
       - 사용자/관리자 화면 기획 및 운영
       - 사용자/관리자 요구사항 분석 및 추적
   - company: 피씨엔
     period: 2022.12 - 2024.02
     role: 화면 기획
+    keywords:
+      - SI
+      - SM
+      - 공공기관
     tasks:
       - 사용자/관리자 화면 기획 및 운영
       - 사업제안서 작성
@@ -22,12 +31,20 @@ experiences:
   - company: 리스크제로
     period: 2022.08 - 2022.11
     role: SI 기획
+    keywords:
+      - SI
+      - 건설안전솔루션
     tasks:
       - 스마트 안전 장비 연동 기획
       - API 문서 분석
   - company: 티쿤글로벌
     period: 2019.10 - 2022.07
     role: CS 기획 / 운영 기획
+    keywords:
+      - 플랫폼
+      - 커머스
+      - 유통/물류
+      - 일본
     tasks:
       - 사용자/관리자 화면 기획 및 운영
       - 고객 요구사항 수집, 분석, 해결

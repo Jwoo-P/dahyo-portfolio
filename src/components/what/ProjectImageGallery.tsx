@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 
 interface ProjectImageGalleryProps {
@@ -13,6 +14,7 @@ export function ProjectImageGallery({
   projectTitle,
 }: ProjectImageGalleryProps) {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [mounted, setMounted] = useState(false);
 
   const closeLightbox = useCallback(() => setLightboxIndex(null), []);
 
@@ -27,6 +29,10 @@ export function ProjectImageGallery({
       prev === null ? null : (prev + 1) % images.length
     );
   }, [images.length]);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (lightboxIndex === null) return;
@@ -74,7 +80,7 @@ export function ProjectImageGallery({
         ))}
       </div>
 
-      {lightboxIndex !== null && (
+      {mounted && lightboxIndex !== null && createPortal(
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
           role="dialog"
@@ -134,7 +140,8 @@ export function ProjectImageGallery({
               </p>
             )}
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );

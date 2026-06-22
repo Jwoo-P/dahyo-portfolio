@@ -12,7 +12,7 @@ interface PortfolioViewProps {
 }
 
 const tabDescriptions: Record<PortfolioTab, string> = {
-  what: "어떤 업무를 했는지 프로젝트별로 한눈에 확인할 수 있습니다. 항목을 펼치면 프로젝트 요약을 볼 수 있습니다.",
+  what: "어떤 업무를 했는지 프로젝트별로 한눈에 확인할 수 있습니다. 카드를 클릭하면 프로젝트 상세 내용을 볼 수 있습니다.",
   how: "프로젝트를 어떤 방식으로 수행했는지 카드를 클릭해 상세 과정을 확인할 수 있습니다.",
 };
 

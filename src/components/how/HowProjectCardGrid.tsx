@@ -19,9 +19,16 @@ function HowProjectCard({
   const orderLabel = String(project.order).padStart(2, "0");
 
   return (
-    <button
-      type="button"
+    <div
+      role="button"
+      tabIndex={0}
       onClick={onSelect}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onSelect();
+        }
+      }}
       className="group flex h-full w-full flex-col rounded-lg border border-[var(--color-border)] bg-white p-4 text-left transition-shadow hover:shadow-md cursor-pointer"
     >
       <div className="flex items-baseline gap-2 mb-2">
@@ -54,7 +61,7 @@ function HowProjectCard({
           </span>
         )}
       </div>
-    </button>
+    </div>
   );
 }
 

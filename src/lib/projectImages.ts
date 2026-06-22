@@ -61,6 +61,9 @@ export const PROJECT_IMAGES: Record<string, string[]> = {
     "/images/what/cafe-siren-order/2.jpg",
     "/images/what/cafe-siren-order/3.jpg",
   ],
+  "ddareungi-redesign": [
+    "/images/what/ddareungi-redesign/1.jpg",
+  ],
 };
 
 export function getProjectImages(slug: string): string[] {

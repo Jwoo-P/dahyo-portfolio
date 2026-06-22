@@ -9,10 +9,27 @@
   --color-border: #e5e5e5;
   --color-muted: #737373;
   --color-accent: #171717;
+
+  /* 기본 대비 각 단계 +2px */
+  --text-xs: 0.875rem;
+  --text-xs--line-height: 1.125rem;
+  --text-sm: 1rem;
+  --text-sm--line-height: 1.375rem;
+  --text-base: 1.125rem;
+  --text-base--line-height: 1.625rem;
+  --text-lg: 1.25rem;
+  --text-lg--line-height: 1.875rem;
+  --text-xl: 1.375rem;
+  --text-xl--line-height: 1.875rem;
+  --text-2xl: 1.625rem;
+  --text-2xl--line-height: 2.125rem;
+  --text-3xl: 2rem;
+  --text-3xl--line-height: 2.375rem;
 }
 
 body {
   font-family: var(--font-sans);
+  font-size: 1.125rem;
   background-color: var(--color-surface);
   color: var(--color-accent);
   -webkit-font-smoothing: antialiased;

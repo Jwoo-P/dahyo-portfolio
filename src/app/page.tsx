@@ -33,17 +33,28 @@ export default function HomePage() {
         ))}
       </Section>
 
+      <Section title="Skills">
+        <div className="flex flex-wrap gap-2">
+          {about.skills.map((skill) => (
+            <Tag key={skill}>{skill}</Tag>
+          ))}
+        </div>
+      </Section>
+
       <Section title="Experience">
         <div className="space-y-6">
           {about.experiences.map((exp) => (
             <div key={exp.company + exp.period}>
-              <div className="flex flex-wrap items-baseline justify-between gap-2 mb-1">
+              <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5 mb-2">
                 <h3 className="text-sm font-medium">{exp.company}</h3>
-                <span className="text-xs text-[var(--color-muted)]">
-                  {exp.period}
-                </span>
+                {exp.keywords?.map((keyword) => (
+                  <Tag key={`${exp.company}-${keyword}`}>{keyword}</Tag>
+                ))}
               </div>
-              <p className="text-xs text-[var(--color-muted)] mb-1">
+              <p className="text-xs text-[var(--color-muted)] mb-2">
+                {exp.period}
+              </p>
+              <p className="text-xs text-[var(--color-muted)] mb-2">
                 {exp.role}
               </p>
               {exp.description && (
@@ -63,25 +74,15 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section title="Skills">
-        <div className="flex flex-wrap gap-2">
-          {about.skills.map((skill) => (
-            <Tag key={skill}>{skill}</Tag>
-          ))}
-        </div>
-      </Section>
-
       {about.education && about.education.length > 0 && (
         <Section title="Education">
           <div className="space-y-6">
             {about.education.map((edu) => (
               <div key={edu.school + edu.period}>
-                <div className="flex flex-wrap items-baseline justify-between gap-2 mb-1">
-                  <h3 className="text-sm font-medium">{edu.school}</h3>
-                  <span className="text-xs text-[var(--color-muted)]">
-                    {edu.period}
-                  </span>
-                </div>
+                <h3 className="text-sm font-medium mb-2">{edu.school}</h3>
+                <p className="text-xs text-[var(--color-muted)] mb-2">
+                  {edu.period}
+                </p>
                 <p className="text-sm text-[var(--color-muted)]">{edu.major}</p>
               </div>
             ))}
@@ -93,14 +94,11 @@ export default function HomePage() {
         <Section title="Certifications">
           <div className="space-y-6">
             {about.certifications.map((cert) => (
-              <div
-                key={cert.name + cert.period}
-                className="flex flex-wrap items-baseline justify-between gap-2"
-              >
-                <h3 className="text-sm font-medium">{cert.name}</h3>
-                <span className="text-xs text-[var(--color-muted)]">
+              <div key={cert.name + cert.period}>
+                <h3 className="text-sm font-medium mb-2">{cert.name}</h3>
+                <p className="text-xs text-[var(--color-muted)]">
                   {cert.period}
-                </span>
+                </p>
               </div>
             ))}
           </div>

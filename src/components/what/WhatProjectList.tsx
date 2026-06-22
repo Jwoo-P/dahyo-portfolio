@@ -1,14 +1,14 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { CATEGORY_LABELS } from "@/types";
 import type { Project } from "@/types";
 import {
   CategoryFilter,
   type CategoryFilterValue,
 } from "@/components/what/CategoryFilter";
 import { KeywordFilter } from "@/components/what/KeywordFilter";
-import { ProjectAccordion } from "@/components/what/ProjectAccordion";
+import { ProjectCardGrid } from "@/components/what/ProjectCardGrid";
+import { WhatDetailModal } from "@/components/what/WhatDetailModal";
 
 function getUniqueTags(projects: Project[]): string[] {
   const counts = new Map<string, number>();
@@ -21,32 +21,6 @@ function getUniqueTags(projects: Project[]): string[] {
     const countDiff = (counts.get(b) ?? 0) - (counts.get(a) ?? 0);
     return countDiff !== 0 ? countDiff : a.localeCompare(b, "ko");
   });
-}
-
-function groupProjects(projects: Project[]) {
-  const companyGroups = new Map<string, Project[]>();
-  const sideTeam: Project[] = [];
-  const sidePersonal: Project[] = [];
-
-  const companyProjects = projects
-    .filter((p) => p.category === "company")
-    .sort((a, b) => b.order - a.order);
-
-  for (const p of companyProjects) {
-    const list = companyGroups.get(p.company) ?? [];
-    list.push(p);
-    companyGroups.set(p.company, list);
-  }
-
-  for (const p of projects) {
-    if (p.category === "side-team") {
-      sideTeam.push(p);
-    } else if (p.category === "side-personal") {
-      sidePersonal.push(p);
-    }
-  }
-
-  return { companyGroups, sideTeam, sidePersonal };
 }
 
 function filterByCategory(
@@ -70,6 +44,17 @@ function filterByTags(projects: Project[], selectedTags: string[]): Project[] {
   );
 }
 
+function sortProjects(projects: Project[]): Project[] {
+  const company = projects
+    .filter((p) => p.category === "company")
+    .sort((a, b) => b.order - a.order);
+  const side = projects
+    .filter((p) => p.category === "side-team" || p.category === "side-personal")
+    .sort((a, b) => b.order - a.order);
+
+  return [...company, ...side];
+}
+
 interface WhatProjectListProps {
   projects: Project[];
 }
@@ -78,20 +63,17 @@ export function WhatProjectList({ projects }: WhatProjectListProps) {
   const [selectedCategory, setSelectedCategory] =
     useState<CategoryFilterValue>("all");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
   const allTags = useMemo(() => getUniqueTags(projects), [projects]);
 
   const filteredProjects = useMemo(() => {
     const byCategory = filterByCategory(projects, selectedCategory);
-    return filterByTags(byCategory, selectedTags);
+    return sortProjects(filterByTags(byCategory, selectedTags));
   }, [projects, selectedCategory, selectedTags]);
 
-  const { companyGroups, sideTeam, sidePersonal } = useMemo(
-    () => groupProjects(filteredProjects),
-    [filteredProjects]
-  );
-
-  const hasResults =
-    companyGroups.size > 0 || sideTeam.length > 0 || sidePersonal.length > 0;
+  const selectedProject = selectedSlug
+    ? filteredProjects.find((p) => p.slug === selectedSlug)
+    : undefined;
 
   function handleToggle(tag: string) {
     setSelectedTags((prev) =>
@@ -113,37 +95,25 @@ export function WhatProjectList({ projects }: WhatProjectListProps) {
         onClear={() => setSelectedTags([])}
       />
 
-      <div className="py-2">
-        {!hasResults ? (
+      <div className="py-4">
+        {filteredProjects.length === 0 ? (
           <p className="py-12 text-center text-sm text-[var(--color-muted)]">
             선택한 조건에 해당하는 프로젝트가 없습니다.
           </p>
         ) : (
-          <>
-            {Array.from(companyGroups.entries()).map(([company, items]) => (
-              <ProjectAccordion
-                key={company}
-                groupLabel={company}
-                projects={items}
-              />
-            ))}
-
-            {sideTeam.length > 0 && (
-              <ProjectAccordion
-                groupLabel={CATEGORY_LABELS["side-team"]}
-                projects={sideTeam}
-              />
-            )}
-
-            {sidePersonal.length > 0 && (
-              <ProjectAccordion
-                groupLabel={CATEGORY_LABELS["side-personal"]}
-                projects={sidePersonal}
-              />
-            )}
-          </>
+          <ProjectCardGrid
+            projects={filteredProjects}
+            onSelect={setSelectedSlug}
+          />
         )}
       </div>
+
+      {selectedProject && (
+        <WhatDetailModal
+          project={selectedProject}
+          onClose={() => setSelectedSlug(null)}
+        />
+      )}
     </>
   );
 }

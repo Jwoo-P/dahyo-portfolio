@@ -1,6 +1,7 @@
 "use client";
 
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import type { HowContent, Project } from "@/types";
 import { Tag } from "@/components/common/Tag";
@@ -13,12 +14,18 @@ interface HowDetailModalProps {
 }
 
 export function HowDetailModal({ project, how, onClose }: HowDetailModalProps) {
+  const [mounted, setMounted] = useState(false);
+
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     },
     [onClose]
   );
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -29,7 +36,9 @@ export function HowDetailModal({ project, how, onClose }: HowDetailModalProps) {
     };
   }, [handleKeyDown]);
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <div
       className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/50 p-0 sm:p-4"
       role="dialog"
@@ -88,6 +97,7 @@ export function HowDetailModal({ project, how, onClose }: HowDetailModalProps) {
           </Link>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

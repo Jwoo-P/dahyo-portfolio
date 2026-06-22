@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import type { Project } from "@/types";
 import { Tag } from "@/components/common/Tag";
@@ -23,57 +24,83 @@ function BulletList({ items }: { items: string[] }) {
   );
 }
 
-function AccordionItem({ project }: { project: Project }) {
-  const [open, setOpen] = useState(false);
-  const orderLabel = String(project.order).padStart(2, "0");
+interface WhatDetailModalProps {
+  project: Project;
+  onClose: () => void;
+}
+
+export function WhatDetailModal({ project, onClose }: WhatDetailModalProps) {
+  const [mounted, setMounted] = useState(false);
   const images = getProjectImages(project.slug);
 
-  return (
-    <div className="border-b border-[var(--color-border)] last:border-b-0">
-      <button
-        type="button"
-        onClick={() => setOpen(!open)}
-        className="w-full text-left py-5 px-1 group cursor-pointer"
-        aria-expanded={open}
+  const handleKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    },
+    [onClose]
+  );
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [handleKeyDown]);
+
+  if (!mounted) return null;
+
+  return createPortal(
+    <div
+      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/50 p-0 sm:p-4"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="what-modal-title"
+      onClick={onClose}
+    >
+      <div
+        className="relative flex max-h-[92vh] sm:max-h-[85vh] w-full sm:max-w-2xl flex-col rounded-t-xl sm:rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] shadow-xl"
+        onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-start justify-between gap-4">
-          <div className="flex-1 min-w-0">
-            <div className="flex items-baseline gap-3 mb-1.5">
-              <span className="text-xs font-mono text-[var(--color-muted)] tabular-nums">
-                {orderLabel}
-              </span>
-              <h3 className="text-base font-medium leading-snug">
-                {project.title}
-              </h3>
-            </div>
-            <p className="text-xs text-[var(--color-muted)] mb-2">
+        <div className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-[var(--color-border)] bg-[var(--color-surface)] px-5 py-4 rounded-t-xl sm:rounded-t-xl">
+          <div className="min-w-0 flex-1">
+            <p className="text-xs font-medium uppercase tracking-widest text-[var(--color-muted)] mb-1">
+              What
+            </p>
+            <h2
+              id="what-modal-title"
+              className="text-lg font-semibold tracking-tight leading-snug"
+            >
+              {project.title}
+            </h2>
+            <p className="text-xs text-[var(--color-muted)] mt-1.5">
               {project.period} · {project.role}
               {project.category === "company" && (
-                <span className="ml-1.5">· {project.company}</span>
+                <span> · {project.company}</span>
               )}
             </p>
-            <p className="text-sm text-[var(--color-muted)] leading-relaxed mb-3">
-              {project.summary}
-            </p>
-            <div className="flex flex-wrap gap-1.5">
+            <div className="flex flex-wrap gap-1.5 mt-3">
               {project.tags.map((tag) => (
                 <Tag key={tag}>{tag}</Tag>
               ))}
             </div>
           </div>
-          <span
-            className={`mt-1 shrink-0 text-[var(--color-muted)] transition-transform duration-200 ${
-              open ? "rotate-45" : ""
-            }`}
-            aria-hidden
+          <button
+            type="button"
+            onClick={onClose}
+            className="shrink-0 flex h-8 w-8 items-center justify-center rounded-full border border-[var(--color-border)] bg-white text-[var(--color-muted)] hover:text-[var(--color-accent)] transition-colors cursor-pointer"
+            aria-label="닫기"
           >
-            +
-          </span>
+            ×
+          </button>
         </div>
-      </button>
 
-      {open && (
-        <div className="pb-6 px-1 space-y-5 border-t border-dashed border-[var(--color-border)] pt-5">
+        <div className="overflow-y-auto px-5 py-5 space-y-5">
           {images.length > 0 && (
             <ProjectImageGallery
               images={images}
@@ -120,7 +147,7 @@ function AccordionItem({ project }: { project: Project }) {
             </div>
           </div>
 
-          <div className="pt-1">
+          <div className="pt-1 border-t border-[var(--color-border)]">
             <Link
               href={`/portfolio/how/${project.slug}`}
               className="inline-flex items-center gap-1.5 text-sm font-medium hover:opacity-70 transition-opacity"
@@ -135,30 +162,8 @@ function AccordionItem({ project }: { project: Project }) {
             )}
           </div>
         </div>
-      )}
-    </div>
-  );
-}
-
-interface ProjectAccordionProps {
-  projects: Project[];
-  groupLabel?: string;
-}
-
-export function ProjectAccordion({
-  projects,
-  groupLabel,
-}: ProjectAccordionProps) {
-  return (
-    <div>
-      {groupLabel && (
-        <h3 className="text-xs font-medium uppercase tracking-widest text-[var(--color-muted)] py-4 border-b border-[var(--color-border)]">
-          {groupLabel}
-        </h3>
-      )}
-      {projects.map((project) => (
-        <AccordionItem key={project.slug} project={project} />
-      ))}
-    </div>
+      </div>
+    </div>,
+    document.body
   );
 }
