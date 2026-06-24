@@ -1,41 +1,58 @@
-const IMAGE_REGEX = /!\[([^\]]*)\]\(([^)]+)\)/;
+"use client";
 
-function parseSegments(body: string) {
-  return body.split(/(!\[[^\]]*\]\([^)]+\))/g).filter(Boolean);
+import { useMemo } from "react";
+import { parseHowBodySegments } from "@/lib/howBodyParser";
+
+interface HowSectionBodyProps {
+  body: string;
+  imageIndexOffset?: number;
+  onImageClick?: (index: number) => void;
 }
 
-export function HowSectionBody({ body }: { body: string }) {
-  const segments = parseSegments(body);
+export function HowSectionBody({
+  body,
+  imageIndexOffset = 0,
+  onImageClick,
+}: HowSectionBodyProps) {
+  const segments = useMemo(
+    () => parseHowBodySegments(body, imageIndexOffset),
+    [body, imageIndexOffset]
+  );
 
   return (
     <div className="space-y-4">
-      {segments.map((segment, index) => {
-        const imageMatch = segment.match(IMAGE_REGEX);
-        if (imageMatch) {
-          const [, alt, src] = imageMatch;
+      {segments.map((segment) => {
+        if (segment.type === "image") {
           return (
-            <figure key={index} className="my-6">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={src}
-                alt={alt}
-                className="w-full rounded-lg border border-[var(--color-border)] bg-white"
-              />
-              {alt ? (
+            <figure key={segment.key} className="my-6">
+              <button
+                type="button"
+                onClick={() => onImageClick?.(segment.imageIndex)}
+                className="group block w-full cursor-pointer overflow-hidden rounded-lg border border-[var(--color-border)] bg-white"
+                aria-label={segment.alt ? `${segment.alt} 확대` : "이미지 확대"}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={segment.src}
+                  alt={segment.alt}
+                  className="w-full transition-transform duration-200 group-hover:scale-[1.01]"
+                />
+              </button>
+              {segment.alt ? (
                 <figcaption className="mt-2 text-center text-xs text-[var(--color-muted)]">
-                  {alt}
+                  {segment.alt}
                 </figcaption>
               ) : null}
             </figure>
           );
         }
 
-        const text = segment.trim();
+        const text = segment.content.trim();
         if (!text) return null;
 
         return (
           <p
-            key={index}
+            key={segment.key}
             className="text-sm leading-relaxed text-[var(--color-muted)] whitespace-pre-line"
           >
             {text}

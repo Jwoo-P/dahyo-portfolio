@@ -16,8 +16,6 @@ function HowProjectCard({
   project: Project;
   onSelect: () => void;
 }) {
-  const orderLabel = String(project.order).padStart(2, "0");
-
   return (
     <div
       role="button"
@@ -31,14 +29,9 @@ function HowProjectCard({
       }}
       className="group flex h-full w-full flex-col rounded-lg border border-[var(--color-border)] bg-white p-4 text-left transition-shadow hover:shadow-md cursor-pointer"
     >
-      <div className="flex items-baseline gap-2 mb-2">
-        <span className="text-xs font-mono text-[var(--color-muted)] tabular-nums">
-          {orderLabel}
-        </span>
-        <h3 className="text-sm font-medium leading-snug group-hover:opacity-80 transition-opacity">
-          {project.title}
-        </h3>
-      </div>
+      <h3 className="text-sm font-medium leading-snug group-hover:opacity-80 transition-opacity mb-2">
+        {project.title}
+      </h3>
 
       <p className="text-xs text-[var(--color-muted)] mb-2">
         {project.period} · {project.role}

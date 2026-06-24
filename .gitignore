@@ -40,6 +40,7 @@ next-env.d.ts
 
 # local source assets (deployed copies live in public/images/)
 what images/
+how images/
 스타벅스/
 오더벨/
 따릉이 리디자인/
